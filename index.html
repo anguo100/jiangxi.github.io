@@ -3,736 +3,1980 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>上饶师院 牛逼炸了！！！</title>
+    <title>千年赣韵 - 江西非物质文化遗产</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛</text></svg>">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&family=Bangers&display=swap');
-        
+        :root {
+            --primary: #1a365d;
+            --secondary: #c53030;
+            --accent: #d69e2e;
+            --background: #faf6f1;
+            --surface: #ffffff;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --border: #e8e0d5;
+            --gradient-primary: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            --gradient-accent: linear-gradient(135deg, #c53030 0%, #9b2c2c 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            min-height: 100vh;
-            background: linear-gradient(45deg, #ff0080, #ff4080, #ff00ff, #00ffff, #00ff80, #ffff00);
-            background-size: 400% 400%;
-            animation: gradientShift 3s ease infinite;
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.7;
             overflow-x: hidden;
-            font-family: 'ZCOOL KuaiLe', 'Ma Shan Zheng', cursive;
         }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+
+        ::selection {
+            background: var(--secondary);
+            color: white;
         }
-        
-        .container {
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--border);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.75rem 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 400;
+            position: relative;
+            padding: 0.25rem 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        /* 英雄区 */
+        .hero {
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
             position: relative;
+            background: var(--gradient-primary);
+            overflow: hidden;
         }
-        
-        /* 爆炸式主标题 */
-        .main-title {
-            font-size: clamp(60px, 15vw, 200px);
-            font-family: 'Ma Shan Zheng', cursive;
-            text-align: center;
-            color: #fff;
-            text-shadow: 
-                0 0 10px #fff,
-                0 0 20px #fff,
-                0 0 30px #fff,
-                0 0 40px #ff0080,
-                0 0 70px #ff0080,
-                0 0 80px #ff0080,
-                0 0 100px #ff0080,
-                0 0 150px #ff0080,
-                5px 5px 0 #000,
-                -5px -5px 0 #000;
-            animation: explode 0.5s ease-in-out infinite alternate, pulse 1s ease-in-out infinite;
-            position: relative;
-            z-index: 10;
-            letter-spacing: 10px;
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.15;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
-        
-        @keyframes explode {
-            0% { transform: scale(1) rotate(-2deg); }
-            100% { transform: scale(1.1) rotate(2deg); }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.5); }
-        }
-        
-        /* 副标题 */
-        .subtitle {
-            font-size: clamp(30px, 8vw, 80px);
-            font-family: 'Bangers', cursive;
-            color: #ffff00;
-            text-shadow: 
-                3px 3px 0 #ff0080,
-                6px 6px 0 #00ffff,
-                0 0 30px #ffff00;
-            margin-top: 30px;
-            animation: bounce 0.6s ease-in-out infinite;
-            letter-spacing: 5px;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-30px) scale(1.1); }
-        }
-        
-        /* 彩带效果 */
-        .confetti {
-            position: fixed;
-            width: 15px;
-            height: 15px;
-            top: -20px;
-            animation: fall linear infinite;
-            z-index: 1;
-        }
-        
-        @keyframes fall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-        
-        /* 星星背景 */
-        .stars {
-            position: fixed;
+
+        .hero-pattern {
+            position: absolute;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            opacity: 0.1;
+            background: radial-gradient(circle at 20% 50%, var(--secondary) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, var(--accent) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
         }
-        
-        .star {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background: #fff;
-            border-radius: 50%;
-            animation: twinkle 1s ease-in-out infinite;
-            box-shadow: 0 0 10px #fff, 0 0 20px #ffff00;
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.1; transform: scale(1); }
+            50% { opacity: 0.2; transform: scale(1.1); }
         }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
-        }
-        
-        /* 爆炸粒子 */
-        .particle {
-            position: fixed;
-            font-size: 30px;
-            animation: explodeParticle 2s ease-out forwards;
-            z-index: 100;
-            pointer-events: none;
-        }
-        
-        @keyframes explodeParticle {
-            0% {
-                opacity: 1;
-                transform: translate(0, 0) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(var(--tx), var(--ty)) scale(0);
-            }
-        }
-        
-        /* 超级牛逼按钮 */
-        .super-button {
-            margin-top: 50px;
-            padding: 25px 80px;
-            font-size: 40px;
-            font-family: 'Bangers', cursive;
-            background: linear-gradient(45deg, #ff0080, #ff00ff, #00ffff, #ff0080);
-            background-size: 300% 300%;
-            animation: buttonGradient 2s ease infinite;
-            border: none;
-            border-radius: 50px;
-            color: white;
-            cursor: pointer;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            box-shadow: 
-                0 10px 30px rgba(255,0,128,0.5),
-                0 0 50px rgba(255,0,255,0.5);
-            transition: all 0.3s;
-            letter-spacing: 5px;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .super-button:hover {
-            transform: scale(1.2) rotate(5deg);
-            box-shadow: 
-                0 15px 50px rgba(255,0,128,0.8),
-                0 0 100px rgba(255,0,255,0.8);
-        }
-        
-        @keyframes buttonGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* 文字滚动 */
-        .marquee {
-            position: fixed;
-            bottom: 50px;
-            width: 100%;
-            overflow: hidden;
-            z-index: 10;
-        }
-        
-        .marquee-content {
-            display: flex;
-            animation: marquee 10s linear infinite;
-            white-space: nowrap;
-        }
-        
-        .marquee-text {
-            font-size: 30px;
-            color: #fff;
-            text-shadow: 0 0 20px #ff0080;
-            padding: 0 50px;
-            font-family: 'ZCOOL KuaiLe', cursive;
-        }
-        
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        /* 震动效果 */
-        .shake {
-            animation: shake 0.5s ease-in-out infinite;
-        }
-        
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px) rotate(-1deg); }
-            75% { transform: translateX(10px) rotate(1deg); }
-        }
-        
-        /* 彩虹边框 */
-        .rainbow-border {
-            position: relative;
-            padding: 30px 50px;
-            border: 5px solid transparent;
-            background: linear-gradient(#000, #000) padding-box,
-                        linear-gradient(45deg, red, orange, yellow, green, blue, purple, red) border-box;
-            background-size: 200% 200%;
-            animation: rainbowBorder 3s linear infinite;
-            border-radius: 20px;
-        }
-        
-        @keyframes rainbowBorder {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* 火焰效果 */
-        .fire {
-            position: relative;
-            animation: fireGlow 0.5s ease-in-out infinite alternate;
-        }
-        
-        @keyframes fireGlow {
-            0% { text-shadow: 0 0 20px #ff0000, 0 0 40px #ff4400, 0 0 60px #ff8800; }
-            100% { text-shadow: 0 0 30px #ff0000, 0 0 60px #ff4400, 0 0 90px #ff8800, 0 0 120px #ffff00; }
-        }
-        
-        /* 闪电效果 */
-        .lightning {
-            animation: lightning 0.1s infinite;
-        }
-        
-        @keyframes lightning {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        /* 文字特效容器 */
-        .effects-container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            pointer-events: none;
-        }
-        
-        /* 礼花效果 */
-        .firework {
-            position: fixed;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            animation: fireworkExplode 1s ease-out forwards;
-        }
-        
-        @keyframes fireworkExplode {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(0);
-                opacity: 0;
-            }
-        }
-        
-        /* 打字机效果 */
-        .typewriter {
-            font-size: 25px;
-            color: #fff;
-            overflow: hidden;
-            white-space: nowrap;
-            animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
-            border-right: 3px solid #fff;
-        }
-        
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        
-        @keyframes blink {
-            from, to { border-color: transparent; }
-            50% { border-color: #fff; }
-        }
-        
-        /* 旋转文字 */
-        .rotating-text {
-            font-size: 50px;
-            color: #00ffff;
-            text-shadow: 0 0 20px #00ffff;
-            animation: rotateText 5s linear infinite;
-            margin-top: 30px;
-        }
-        
-        @keyframes rotateText {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* 弹跳球 */
-        .bouncing-ball {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff0080, #ff00ff);
-            position: fixed;
-            animation: bounceBall 2s ease-in-out infinite;
-            box-shadow: 0 0 30px #ff0080;
-        }
-        
-        @keyframes bounceBall {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-200px) scale(1.2); }
-        }
-        
-        /* 彩虹文字 */
-        .rainbow-text {
-            background: linear-gradient(45deg, 
-                #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: rainbowText 3s ease infinite;
-        }
-        
-        @keyframes rainbowText {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* 爆炸背景 */
-        .explosion-bg {
-            position: fixed;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(255,0,128,0.8) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: explosionBg 2s ease-out infinite;
-            pointer-events: none;
-        }
-        
-        @keyframes explosionBg {
-            0% { transform: scale(0); opacity: 1; }
-            100% { transform: scale(3); opacity: 0; }
-        }
-        
-        /* 多行夸张文字 */
-        .extra-text {
-            margin-top: 40px;
-            font-size: clamp(25px, 5vw, 50px);
-            color: #fff;
+
+        .hero-content {
             text-align: center;
-            text-shadow: 0 0 20px #ff0080;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .hero-title span {
+            display: block;
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 0.4em;
+            color: var(--accent);
+            letter-spacing: 0.3em;
+            margin-top: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto 3rem;
             line-height: 1.8;
-            position: relative;
-            z-index: 10;
         }
-        
-        .extra-text span {
-            display: inline-block;
-            animation: popIn 0.5s ease-out backwards;
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
         }
-        
-        @keyframes popIn {
-            0% { transform: scale(0); opacity: 0; }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); opacity: 1; }
+
+        .stat-item {
+            text-align: center;
         }
-        
-        /* 底部大标语 */
-        .footer-banner {
-            font-size: clamp(40px, 10vw, 120px);
-            font-family: 'Bangers', cursive;
-            position: fixed;
-            bottom: 150px;
+
+        .stat-number {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            color: #ffff00;
-            text-shadow: 
-                3px 3px 0 #ff0080,
-                -3px -3px 0 #00ffff,
-                0 0 30px #ffff00;
-            animation: footerBounce 1s ease-in-out infinite;
-            letter-spacing: 10px;
-            z-index: 10;
+            animation: bounce 2s infinite;
         }
-        
-        @keyframes footerBounce {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.1); }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            color: rgba(255,255,255,0.6);
         }
-        
-        /* 特效文字 */
-        .special-effect {
-            font-size: 35px;
-            margin: 20px 0;
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* 通用容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .section-tag::before,
+        .section-tag::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--secondary);
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 关于非遗 */
+        .about {
+            background: var(--surface);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
             position: relative;
-            z-index: 10;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
         }
-        
-        .neon {
-            color: #fff;
-            text-shadow: 
-                0 0 5px #fff,
-                0 0 10px #fff,
-                0 0 20px #fff,
-                0 0 40px #ff0080,
-                0 0 80px #ff0080;
-            animation: neon 1.5s ease-in-out infinite alternate;
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
         }
-        
-        @keyframes neon {
-            0% { text-shadow: 
-                0 0 5px #fff,
-                0 0 10px #fff,
-                0 0 20px #fff,
-                0 0 40px #ff0080,
-                0 0 80px #ff0080; }
-            100% { text-shadow: 
-                0 0 10px #fff,
-                0 0 20px #fff,
-                0 0 30px #fff,
-                0 0 50px #ff0080,
-                0 0 100px #ff0080,
-                0 0 150px #ff00ff; }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 3px solid var(--accent);
+            border-radius: 12px;
+            transform: translate(15px, 15px);
+            z-index: -1;
         }
-        
-        /* 3D效果 */
-        .threedee {
-            font-size: 40px;
-            color: #fff;
-            text-shadow: 
-                1px 1px 0 #ff0080,
-                2px 2px 0 #ff0080,
-                3px 3px 0 #ff0080,
-                4px 4px 0 #ff0080,
-                5px 5px 0 #ff0080,
-                6px 6px 10px rgba(0,0,0,0.5);
-            transform: perspective(500px) rotateX(10deg);
-            animation: threedee 2s ease-in-out infinite;
+
+        .about-content h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), #2d4a7c);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .feature-text h4 {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-text p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* 项目展示 */
+        .heritage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .heritage-card {
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .heritage-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .card-image {
             position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .heritage-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--secondary);
+            color: white;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+            background: var(--background);
+        }
+
+        .card-location {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .card-location svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .card-link {
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            text-decoration: none;
+        }
+
+        .card-link:hover {
+            color: var(--primary);
+        }
+
+        /* 筛选按钮 */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* 传承人 */
+        .masters {
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .masters::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50m-40 0a40,40 0 1,0 80,0a40,40 0 1,0 -80,0' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.1'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .masters .section-tag {
+            color: var(--accent);
+        }
+
+        .masters .section-tag::before,
+        .masters .section-tag::after {
+            background: var(--accent);
+        }
+
+        .masters .section-title {
+            color: white;
+        }
+
+        .masters .section-desc {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .masters-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0 2rem;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+
+        .masters-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .master-card {
+            flex-shrink: 0;
+            width: 280px;
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            transition: transform 0.3s ease;
+        }
+
+        .master-card:hover {
+            transform: scale(1.02);
+        }
+
+        .master-image {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .master-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .master-badge {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .master-info {
+            padding: 1.5rem;
+        }
+
+        .master-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .master-title {
+            color: var(--secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .master-skill {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .master-skill svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent);
+        }
+
+        /* 地图 */
+        .map-container {
+            background: var(--surface);
+        }
+
+        .map-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .map-svg {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .map-svg path {
+            fill: var(--border);
+            stroke: white;
+            stroke-width: 2;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .map-svg path:hover {
+            fill: var(--secondary);
+        }
+
+        .map-svg path.active {
+            fill: var(--secondary);
+        }
+
+        .map-info {
+            padding: 2rem;
+            background: var(--background);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .map-info h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .map-info h3 svg {
+            width: 24px;
+            height: 24px;
+            color: var(--secondary);
+        }
+
+        .map-heritage-list {
+            list-style: none;
+        }
+
+        .map-heritage-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .map-heritage-list li:last-child {
+            border-bottom: none;
+        }
+
+        .heritage-name {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .heritage-count {
+            background: var(--primary);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        /* 视频专区 */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-play {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            transition: background 0.3s;
+        }
+
+        .video-thumbnail:hover .video-play {
+            background: rgba(0,0,0,0.5);
+        }
+
+        .play-btn {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .video-thumbnail:hover .play-btn {
+            transform: scale(1.1);
+        }
+
+        .play-btn svg {
+            width: 28px;
+            height: 28px;
+            color: var(--secondary);
+            margin-left: 4px;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-meta {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-column h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .social-links svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* 模态框 */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--surface);
+            border-radius: 16px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
             z-index: 10;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
-        @keyframes threedee {
-            0%, 100% { transform: perspective(500px) rotateX(10deg) rotateY(0deg); }
-            50% { transform: perspective(500px) rotateX(10deg) rotateY(30deg); }
+
+        .modal-close svg {
+            width: 20px;
+            height: 20px;
+            color: var(--text-primary);
         }
-        
-        /* 闪烁文字 */
-        .flash {
-            animation: flash 0.5s linear infinite;
+
+        .modal-image {
+            height: 350px;
+            overflow: hidden;
+            position: relative;
         }
-        
-        @keyframes flash {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-content {
+            padding: 2rem;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.75rem;
+            color: var(--primary);
+        }
+
+        .modal-category {
+            background: var(--secondary);
+            color: white;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        .modal-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-section h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-section h4 svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
+        }
+
+        .modal-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* 动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .heritage-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .map-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .heritage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* 移动端菜单 */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--primary);
+            z-index: 1500;
+            padding: 5rem 2rem 2rem;
+            transition: right 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1400;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 36px;
+            height: 36px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-close svg {
+            width: 24px;
+            height: 24px;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
-    <div class="container">
-        <div class="rainbow-border">
-            <h1 class="main-title fire lightning shake">上饶师院</h1>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">
+                <svg class="logo-icon" viewBox="0 0 36 36" fill="none">
+                    <circle cx="18" cy="18" r="16" stroke="#d69e2e" stroke-width="2"/>
+                    <path d="M12 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#d69e2e" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="18" cy="18" r="2" fill="#d69e2e"/>
+                </svg>
+                千年赣韵
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">走进非遗</a></li>
+                <li><a href="#heritage">非遗项目</a></li>
+                <li><a href="#masters">传承人</a></li>
+                <li><a href="#map">文化地图</a></li>
+                <li><a href="#video">影像专区</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <h2 class="subtitle rainbow-text">牛 逼 炸 了 ！ ！ ！</h2>
-        
-        <div class="extra-text" id="extraText"></div>
-        
-        <button class="super-button" onclick="explodeAll()">点我爆炸！！！</button>
-        
-        <div class="rotating-text">★★★★★</div>
-        
-        <div class="threedee">宇宙第一高校！！！</div>
-        
-        <div class="neon special-effect">地表最强 · 无人能敌</div>
+    </nav>
+
+    <!-- 移动端菜单 -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileClose">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <ul>
+            <li><a href="#about">走进非遗</a></li>
+            <li><a href="#heritage">非遗项目</a></li>
+            <li><a href="#masters">传承人</a></li>
+            <li><a href="#map">文化地图</a></li>
+            <li><a href="#video">影像专区</a></li>
+        </ul>
     </div>
-    
-    <div class="footer-banner">上饶师院 NO.1 FOREVER</div>
-    
-    <div class="marquee">
-        <div class="marquee-content">
-            <span class="marquee-text">🎉 上饶师院最牛逼！🎉</span>
-            <span class="marquee-text">🔥 全国第一高校！🔥</span>
-            <span class="marquee-text">💖 我爱饶师院！💖</span>
-            <span class="marquee-text">🚀 最强！最强！最强！🚀</span>
-            <span class="marquee-text">🏆 世界顶尖大学！🏆</span>
-            <span class="marquee-text">⚡ 牛逼到爆炸！⚡</span>
-            <span class="marquee-text">🎊 上饶师院万岁！🎊</span>
-            <span class="marquee-text">🌟 宇宙第一！🌟</span>
-            <span class="marquee-text">🎉 上饶师院最牛逼！🎉</span>
-            <span class="marquee-text">🔥 全国第一高校！🔥</span>
-            <span class="marquee-text">💖 我爱饶师院！💖</span>
-            <span class="marquee-text">🚀 最强！最强！最强！🚀</span>
-            <span class="marquee-text">🏆 世界顶尖大学！🏆</span>
-            <span class="marquee-text">⚡ 牛逼到爆炸！⚡</span>
-            <span class="marquee-text">🎊 上饶师院万岁！🎊</span>
-            <span class="marquee-text">🌟 宇宙第一！🌟</span>
+
+    <!-- 英雄区 -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                UNESCO人类非物质文化遗产
+            </div>
+            <h1 class="hero-title">
+                千年赣韵
+                <span> Jiangxi Intangible Cultural Heritage</span>
+            </h1>
+            <p class="hero-subtitle">
+                探访赣鄱大地的文化根脉，感受千年传承的匠心智慧
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">947</div>
+                    <div class="stat-label">省级非遗项目</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">70</div>
+                    <div class="stat-label">国家级非遗项目</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">世界级非遗</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 关于非遗 -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=600&h=400&fit=crop" alt="景德镇青花瓷">
+                </div>
+                <div class="about-content fade-in">
+                    <div class="section-tag">源远流长</div>
+                    <h3>江西非遗：赣鄱文化的活态传承</h3>
+                    <p>
+                        江西，这片钟灵毓秀的红土地，孕育了丰富多彩的非物质文化遗产。从景德镇千年不灭的窑火到婺源篁岭的晒秋人家，从赣州客家人的山歌到鄱阳湖畔的渔歌，每一项非遗都是赣鄱儿女智慧与情感的结晶。
+                    </p>
+                    <p>
+                        目前，江西拥有国家级非物质文化遗产代表性项目70项，省级947项，涵盖传统技艺、传统舞蹈、民间文学、传统医药等十大类别。这些珍贵的文化遗产，正以活态的形式在赣鄱大地上传承延续。
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                    <path d="M2 17l10 5 10-5"></path>
+                                    <path d="M2 12l10 5 10-5"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-text">
+                                <h4>传统技艺</h4>
+                                <p>景德镇陶瓷、赣州客家围屋营造技艺</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-text">
+                                <h4>传统舞蹈</h4>
+                                <p>傩舞、鲤鱼灯、妆驾舞</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-text">
+                                <h4>民间文学</h4>
+                                <p>赣南采茶戏、兴国山歌</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"></path>
+                                    <path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path>
+                                    <path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"></path>
+                                    <path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"></path>
+                                    <path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"></path>
+                                    <path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"></path>
+                                    <path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"></path>
+                                    <path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-text">
+                                <h4>传统医药</h4>
+                                <p>樟树药俗、 建昌帮药业</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 非遗项目 -->
+    <section id="heritage">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag">经典项目</div>
+                <h2 class="section-title">代表性非遗项目</h2>
+                <p class="section-desc">精选江西最具代表性的非物质文化遗产项目，感受赣鄱文化的独特魅力</p>
+            </div>
+            <div class="filter-tabs fade-in">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="传统技艺">传统技艺</button>
+                <button class="filter-btn" data-filter="传统舞蹈">传统舞蹈</button>
+                <button class="filter-btn" data-filter="民间文学">民间文学</button>
+                <button class="filter-btn" data-filter="民俗">民俗</button>
+            </div>
+            <div class="heritage-grid" id="heritageGrid">
+                <!-- 卡片通过JS动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 传承人 -->
+    <section class="masters" id="masters">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag">薪火相传</div>
+                <h2 class="section-title">非遗传承人风采</h2>
+                <p class="section-desc">，他们是文化的守护者，用毕生精力诠释着匠人精神</p>
+            </div>
+            <div class="masters-slider fade-in" id="mastersSlider">
+                <!-- 传承人卡片通过JS动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 地图 -->
+    <section class="map-container" id="map">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag">按图索骥</div>
+                <h2 class="section-title">江西非遗地理分布</h2>
+                <p class="section-desc">点击地图区域，探索各地代表性非遗项目</p>
+            </div>
+            <div class="map-wrapper fade-in">
+                <svg class="map-svg" viewBox="0 0 400 350" id="jiangxiMap">
+                    <!-- 简化的江西地图SVG -->
+                    <path data-region="jdz" d="M150 50 L220 40 L260 80 L240 140 L180 150 L130 100 Z" title="景德镇"></path>
+                    <path data-region="nc" d="M220 140 L300 120 L340 180 L300 240 L220 220 L200 160 Z" title="南昌"></path>
+                    <path data-region="gz" d="M280 240 L360 220 L380 300 L320 340 L240 320 L260 260 Z" title="赣州"></path>
+                    <path data-region="sr" d="M160 160 L220 140 L220 220 L160 240 L120 200 Z" title="上饶"></path>
+                    <path data-region="jj" d="M80 140 L130 100 L180 150 L160 240 L100 260 L60 200 Z" title="九江"></path>
+                    <path data-region="yt" d="M180 150 L240 140 L260 200 L220 260 L160 240 Z" title="鹰潭"></path>
+                    <path data-region="px" d="M160 260 L220 260 L240 320 L180 340 L120 300 Z" title="萍乡"></path>
+                    <path data-region="yc" d="M120 60 L180 50 L180 150 L130 100 L80 140 L60 100 Z" title="宜春"></path>
+                    <path data-region="fu" d="M100 260 L160 240 L180 340 L120 360 L60 320 Z" title="抚州"></path>
+                    <path data-region="xc" d="M240 80 L300 60 L300 120 L260 140 L240 140 Z" title="新余"></path>
+                </svg>
+                <div class="map-info" id="mapInfo">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        请选择地区
+                    </h3>
+                    <p style="color: var(--text-secondary);">点击上方地图中的区域，查看该地区的非遗项目</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 视频专区 -->
+    <section id="video">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag">光影记忆</div>
+                <h2 class="section-title">非遗影像专区</h2>
+                <p class="section-desc">用镜头记录非遗，用影像传承文化</p>
+            </div>
+            <div class="video-grid fade-in">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&h=400&fit=crop" alt="景德镇陶瓷">
+                        <div class="video-play">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">瓷都千年：景德镇陶瓷制作技艺</h3>
+                        <p class="video-meta">时长 15:32 | 观看 12.8万</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1516550135130-0f4d32b20efa?w=600&h=400&fit=crop" alt="客家山歌">
+                        <div class="video-play">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">山歌回荡：赣南客家山歌</h3>
+                        <p class="video-meta">时长 12:45 | 观看 8.3万</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop" alt="傩舞">
+                        <div class="video-play">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">千年古舞：南丰傩舞</h3>
+                        <p class="video-meta">时长 18:20 | 观看 6.5万</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop" alt="婺源文化">
+                        <div class="video-play">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">晒秋人家：婺源晒秋民俗</h3>
+                        <p class="video-meta">时长 10:15 | 观看 5.2万</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>千年赣韵</h3>
+                    <p>传承千年文化，守护精神家园。江西非物质文化遗产数字展示平台，致力于让更多人了解、欣赏和保护这些珍贵的文化遗产。</p>
+                </div>
+                <div class="footer-column">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#about">走进非遗</a></li>
+                        <li><a href="#heritage">非遗项目</a></li>
+                        <li><a href="#masters">传承人</a></li>
+                        <li><a href="#video">影像专区</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>热门项目</h4>
+                    <ul>
+                        <li><a href="#">景德镇陶瓷</a></li>
+                        <li><a href="#">赣南客家围屋</a></li>
+                        <li><a href="#">弋阳腔</a></li>
+                        <li><a href="#">婺源三雕</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><a href="#">江西省文化和旅游厅</a></li>
+                        <li><a href="#">非遗保护中心</a></li>
+                        <li><a href="mailto:info@jxfeiyi.cn">info@jxfeiyi.cn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 千年赣韵 - 江西非物质文化遗产展示平台 | 保护文化遗产 传承民族精神</p>
+                <div class="social-links">
+                    <a href="#" aria-label="微信">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8.5 11.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path>
+                            <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49-.09-.79-.15-1.6.03-2.36-.54-.59-1.87-3.13-1.87-3.13s-.48-.96-.48-2.37c0-2.22 1.29-3.88 2.9-3.88 1.37 0 2.03.97 2.03 2.15 0 1.31-.83 3.27-1.26 5.08-.36 1.51.75 2.74 2.23 2.74 2.67 0 4.73-2.82 4.73-6.87 0-3.59-2.58-6.1-6.27-6.1-4.27 0-6.78 3.2-6.78 6.51 0 1.29.5 2.67 1.12 3.42.12.15.14.28.1.43-.12.45-.38 1.44-.43 1.64-.06.26-.24.32-.44.19-1.65-.77-2.68-3.18-2.68-5.12 0-4.17 3.03-8 8.75-8 4.6 0 8.18 3.28 8.18 7.66 0 4.57-2.88 8.25-6.88 8.25-1.35 0-2.62-.7-3.05-1.53l-.83 3.12c-.3 1.15-.88 2.31-1.33 3.08.99.3 2.04.47 3.12.47 5.52 0 10-4.48 10-10S17.52 2 12 2z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="微博">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.739 5.443zM9.05 17.219c-.384.616-1.208.884-1.829.602-.612-.279-.793-.991-.406-1.593.379-.595 1.176-.861 1.793-.601.622.263.82.972.442 1.592zm1.27-1.627c-.141.237-.449.353-.689.253-.236-.09-.313-.361-.177-.586.138-.227.436-.346.672-.24.239.09.315.36.194.573zm.176-2.719c-1.893-.493-4.033.45-4.857 2.118-.836 1.704-.026 3.591 1.886 4.21 1.983.642 4.318-.341 5.132-2.179.8-1.793-.201-3.642-2.161-4.149zm7.563-1.224c-.346-.918-1.152-1.533-2.106-1.71-.227-.043-.453-.065-.676-.065-.922 0-1.79.417-2.371 1.14-.269-.775-.875-1.378-1.615-1.698-.769-.331-1.622-.311-2.352.051-.688.341-1.186.951-1.374 1.681-.169.656-.076 1.336.262 1.919-.735.537-1.32 1.305-1.606 2.19-.326 1.006-.266 2.059.167 3.001.412.896 1.047 1.644 1.849 2.174.772.51 1.647.833 2.535.984.43.073.865.11 1.298.11 1.905 0 3.726-.748 5.057-2.086.023-.023.045-.047.068-.07 1.197-1.328 1.739-3.11 1.471-4.893-.106-.706-.323-1.376-.632-1.998.312-.215.635-.428.961-.635.126-.08.253-.156.379-.236l.004-.002c.044-.033.089-.064.133-.098l.037-.027c.043-.033.088-.066.134-.097.018-.012.033-.026.051-.039l.075-.054c.015-.01.029-.021.044-.032l.09-.064c.012-.009.024-.018.036-.026l.087-.06c.012-.009.024-.017.036-.024l.087-.057c.014-.009.029-.018.043-.027l.078-.048c.018-.01.035-.022.053-.033l.078-.046c.02-.011.04-.023.061-.034l.072-.04c.025-.014.051-.027.077-.041.022-.011.042-.024.064-.035l.066-.034c.026-.014.053-.027.08-.04l.057-.028c.033-.016.067-.032.101-.047.014-.007.028-.013.042-.019.036-.016.073-.032.11-.048.012-.005.023-.01.035-.015.039-.016.079-.032.119-.047.007-.003.014-.005.021-.008.046-.018.093-.035.14-.051.007-.003.014-.005.021-.007l.132-.045c.003-.001.006-.002.009-.003.054-.018.11-.034.165-.05.003-.001.006-.002.01-.003.058-.016.117-.031.176-.045l.009-.002c.064-.015.129-.029.194-.042l.007-.002c.071-.014.143-.026.215-.037l.012-.002c.078-.012.157-.022.236-.03l.007-.001c.09-.009.182-.015.273-.02l.009-.001c.099-.005.198-.007.298-.007.185 0 .37.009.554.026l.009.001c.082.007.163.017.244.028l.013.002c.073.01.145.021.217.033l.012.002c.075.013.149.027.223.042l.007.002c.073.015.145.032.217.049l.007.002c.065.016.13.033.194.051l.006.002c.077.021.153.044.229.068l.008.002c.053.017.106.035.159.053.01.004.021.007.031.011.055.019.109.04.164.061l.024.009c.06.023.119.048.178.073l.014.006c.062.027.124.055.185.084l.014.007c.062.029.123.06.184.091l.013.006c.06.031.119.063.178.096l.012.007c.058.032.116.066.173.1l.012.007c.056.034.112.068.167.104l.011.007c.054.035.108.072.161.109l.01.007c.052.037.104.075.155.114l.01.007c.05.038.099.078.148.118l.008.006c.048.04.095.08.142.122l.007.006c.046.041.091.084.136.127l.006.005c.044.042.087.085.129.129l.005.005c.041.043.082.088.122.133l.004.005c.039.044.077.089.115.135l.003.004c.037.046.073.092.108.139l.003.004c.034.047.068.094.1.142l.002.003c.031.048.062.097.092.146l.001.002c.028.049.056.099.083.149l.023.044z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="邮箱">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 详情模态框 -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modalContent">
+            <button class="modal-close" id="modalClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-image">
+                <img id="modalImage" src="" alt="">
+            </div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <span class="modal-category" id="modalCategory"></span>
+                </div>
+                <div class="modal-section">
+                    <h4>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        项目简介
+                    </h4>
+                    <p id="modalDesc"></p>
+                </div>
+                <div class="modal-section">
+                    <h4>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                        历史渊源
+                    </h4>
+                    <p id="modalHistory"></p>
+                </div>
+                <div class="modal-section">
+                    <h4>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        传承现状
+                    </h4>
+                    <p id="modalStatus"></p>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <div class="effects-container" id="effectsContainer"></div>
-    
+
     <script>
-        // 创建星星背景
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 2 + 's';
-                star.style.animationDuration = (Math.random() * 2 + 0.5) + 's';
-                starsContainer.appendChild(star);
+        // 非遗项目数据
+        const heritageData = [
+            {
+                id: 1,
+                title: '景德镇手工制瓷技艺',
+                category: '传统技艺',
+                location: '景德镇市',
+                image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&h=400&fit=crop',
+                desc: '景德镇瓷器以"白如玉、薄如纸、声如磬、明如镜"著称于世，手工制瓷技艺包括拉坯、利坯、画坯、施釉、烧窑等72道工序。',
+                history: '景德镇制瓷历史可追溯至汉代，宋元时期成为全国制瓷中心，明清两代更被誉为"瓷都"。千年窑火不灭，技艺代代相传。',
+                status: '现有国家级传承人5人，省级传承人32人，景德镇陶瓷大学等专业院校持续培养专业人才。'
+            },
+            {
+                id: 2,
+                title: '赣南客家围屋营造技艺',
+                category: '传统技艺',
+                location: '赣州市',
+                image: 'https://images.unsplash.com/photo-1516550135130-0f4d32b20efa?w=600&h=400&fit=crop',
+                desc: '客家围屋是客家文化的标志性建筑，融合了居住、防御、祭祀等功能，体现了客家人的家族观念和建筑智慧。',
+                history: '客家围屋始建于明末清初，历经数百年发展，形成了独特的建筑风格和营造技艺体系。',
+                status: '现存围屋500余座，其中龙南县被誉为"中国围屋之乡"，多项技艺列入各级非遗名录。'
+            },
+            {
+                id: 3,
+                title: '南丰傩舞',
+                category: '传统舞蹈',
+                location: '抚州市南丰县',
+                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
+                desc: '南丰傩舞被誉为"中国古代舞蹈活化石"，保存了远古时期的祭祀舞蹈形态，具有重要的历史文化价值。',
+                history: '南丰傩舞源于古傩，历经三千余年传承发展，形成了独特的艺术风格，被誉为戏曲活化石。',
+                status: '全县有傩班108个，傩舞艺人千余人，每年春节期间举行盛大的傩舞表演活动。'
+            },
+            {
+                id: 4,
+                title: '弋阳腔',
+                category: '民间文学',
+                location: '上饶市弋阳县',
+                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop',
+                desc: '弋阳腔是中国四大声腔之一，以其高亢激昂的唱腔和独特的帮腔形式著称，对京剧等剧种产生深远影响。',
+                history: '弋阳腔形成于元末明初，以弋阳为中心流布全国，是赣剧的主要声腔，被誉为"戏曲鼻祖"。',
+                status: '弋阳腔已被列入国家级非遗名录，建立了专业院团进行保护和传承。'
+            },
+            {
+                id: 5,
+                title: '婺源三雕',
+                category: '传统技艺',
+                location: '上饶市婺源县',
+                image: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=600&h=400&fit=crop',
+                desc: '婺源三雕包括木雕、石雕、砖雕，以精湛的雕刻技艺和丰富的文化内涵著称，是徽派建筑装饰的精华。',
+                history: '婺源三雕始于明代，鼎盛于清代，与徽派建筑同步发展，形成了独特的艺术风格。',
+                status: '现有省级以上传承人10余人，三雕技艺在古建筑修缮中得到广泛运用。'
+            },
+            {
+                id: 6,
+                title: '兴国山歌',
+                category: '民间文学',
+                location: '赣州市兴国县',
+                image: 'https://images.unsplash.com/photo-1461784180009-21121b2f204c?w=600&h=400&fit=crop',
+                desc: '兴国山歌是赣南客家人的口头文学，以即兴演唱著称，唱腔高亢嘹亮，有"山沟沟里的天籁"之美誉。',
+                history: '兴国山歌起源于唐代，历经千年传承与发展，是客家文化的重要组成部分。',
+                status: '兴国县有山歌队200余支，歌手千余人，山歌文化在当地民间广泛流传。'
+            },
+            {
+                id: 7,
+                title: '萍乡傩面具',
+                category: '传统技艺',
+                location: '萍乡市',
+                image: 'https://images.unsplash.com/photo-1596434231680-0d5ebb7f6f53?w=600&h=400&fit=crop',
+                desc: '萍乡傩面具雕刻精美，造型古朴神秘，是傩文化的重要载体，被誉为"中华一绝"。',
+                history: '萍乡傩面具雕刻技艺代代相传，保留了古代面具雕刻的原始工艺和文化内涵。',
+                status: '以芦溪县为代表，现有传承人10余人，面具作品多次参加国内外展览。'
+            },
+            {
+                id: 8,
+                title: '鄱阳湖渔歌',
+                category: '民间文学',
+                location: '上饶市鄱阳县',
+                image: 'https://images.unsplash.com/photo-1473549243069-1d3c2dd9c2e4?w=600&h=400&fit=crop',
+                desc: '鄱阳湖渔歌是湖区渔民在劳动中即兴创作的歌谣，旋律优美，歌词生动，富有浓郁的渔乡特色。',
+                history: '鄱阳湖渔歌源于唐代，与湖区渔民的生产生活密切相关，是鄱阳湖文化的重要组成。',
+                status: '渔歌文化在鄱阳湖自然保护区得到保护传承，每年举办渔歌比赛等活动。'
+            },
+            {
+                id: 9,
+                title: '白鹭吉塘火龙',
+                category: '民俗',
+                location: '赣州市赣县',
+                image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&h=400&fit=crop',
+                desc: '白鹭吉塘火龙是客家地区独特的民俗活动，以舞火龙祈福来年风调雨顺，场面壮观热闹。',
+                history: '吉塘火龙源于清代，至今已传承数百年，是当地客家人重要的民俗活动。',
+                status: '每年中秋期间举行，吸引周边地区群众参与观看，成为当地重要文化旅游品牌。'
+            },
+            {
+                id: 10,
+                title: '夏布织造技艺',
+                category: '传统技艺',
+                location: '宜春市上高县',
+                image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop',
+                desc: '夏布是以苎麻为原料手工织造的纺织品，以其轻薄透气、凉爽宜人的特性著称，是传统夏季服装的上佳面料。',
+                history: '夏布织造历史悠久，可追溯至宋代，上高县被誉为"中国夏布之乡"。',
+                status: '现有夏布企业数十家，形成了从种植到加工的完整产业链。'
             }
-        }
-        
-        // 创建彩带
-        function createConfetti() {
-            const colors = ['#ff0080', '#ff00ff', '#00ffff', '#ffff00', '#00ff80', '#ff4080'];
-            const emojis = ['🎉', '🎊', '✨', '💖', '🔥', '⚡', '🏆', '🌟', '💯', '🎈', '🥳', '💪'];
-            
-            setInterval(() => {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                confetti.style.fontSize = '20px';
-                confetti.style.background = 'transparent';
-                document.body.appendChild(confetti);
-                
-                setTimeout(() => confetti.remove(), 5000);
-            }, 100);
-        }
-        
-        // 爆炸粒子效果
-        function createParticle(x, y) {
-            const emojis = ['💥', '🎆', '✨', '🔥', '⚡', '💫', '🌟', '💖', '🎉', '🏆'];
-            for (let i = 0; i < 10; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                particle.style.left = x + 'px';
-                particle.style.top = y + 'px';
-                
-                const angle = (Math.PI * 2 / 10) * i;
-                const distance = Math.random() * 200 + 100;
-                particle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
-                particle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
-                
-                document.body.appendChild(particle);
-                setTimeout(() => particle.remove(), 2000);
+        ];
+
+        // 传承人数据
+        const mastersData = [
+            {
+                name: '刘远长',
+                title: '国家级传承人',
+                skill: '景德镇陶瓷雕塑',
+                image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+                desc: '从事陶瓷雕塑50余年，作品多次获国家金奖'
+            },
+            {
+                name: '张玲',
+                title: '省级传承人',
+                skill: '赣南客家山歌',
+                image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
+                desc: '致力于客家山歌的收集、整理与传承工作'
+            },
+            {
+                name: '李明',
+                title: '省级传承人',
+                skill: '婺源三雕',
+                image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop',
+                desc: '精通木雕、石雕、砖雕三项技艺'
+            },
+            {
+                name: '王芳',
+                title: '市级传承人',
+                skill: '南丰傩舞',
+                image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop',
+                desc: '致力于傩舞教学与表演传承'
+            },
+            {
+                name: '陈志强',
+                title: '省级传承人',
+                skill: '弋阳腔',
+                image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop',
+                desc: '弋阳腔第四代传人，嗓音独特'
+            },
+            {
+                name: '黄秀英',
+                title: '市级传承人',
+                skill: '夏布织造',
+                image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop',
+                desc: '传承祖辈夏布织造技艺，开设传习所'
             }
-        }
-        
-        // 创建礼花
-        function createFirework(x, y) {
-            const colors = ['#ff0080', '#ff00ff', '#00ffff', '#ffff00', '#00ff80', '#ff4080', '#ffffff'];
-            const particles = 30;
-            
-            for (let i = 0; i < particles; i++) {
-                const firework = document.createElement('div');
-                firework.className = 'firework';
-                firework.style.left = x + 'px';
-                firework.style.top = y + 'px';
-                firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                firework.style.boxShadow = `0 0 10px ${colors[Math.floor(Math.random() * colors.length)]}`;
-                
-                const angle = (Math.PI * 2 / particles) * i;
-                const velocity = Math.random() * 100 + 50;
-                const tx = Math.cos(angle) * velocity;
-                const ty = Math.sin(angle) * velocity;
-                
-                firework.animate([
-                    { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-                    { transform: `translate(${tx}px, ${ty}px) scale(0)`, opacity: 0 }
-                ], {
-                    duration: 1000,
-                    easing: 'ease-out'
-                });
-                
-                document.body.appendChild(firework);
-                setTimeout(() => firework.remove(), 1000);
-            }
-        }
-        
-        // 爆炸所有效果
-        function explodeAll() {
-            // 多个礼花
-            for (let i = 0; i < 10; i++) {
-                setTimeout(() => {
-                    createFirework(
-                        Math.random() * window.innerWidth,
-                        Math.random() * window.innerHeight * 0.5
-                    );
-                }, i * 100);
-            }
-            
-            // 多个粒子
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    createParticle(
-                        Math.random() * window.innerWidth,
-                        Math.random() * window.innerHeight
-                    );
-                }, i * 50);
-            }
-            
-            // 震动屏幕
-            document.body.classList.add('shake');
-            setTimeout(() => document.body.classList.remove('shake'), 1000);
-            
-            // 创建爆炸背景
-            for (let i = 0; i < 5; i++) {
-                const explosion = document.createElement('div');
-                explosion.className = 'explosion-bg';
-                explosion.style.left = Math.random() * 80 + 10 + '%';
-                explosion.style.top = Math.random() * 80 + 10 + '%';
-                document.body.appendChild(explosion);
-                setTimeout(() => explosion.remove(), 2000);
-            }
-        }
-        
-        // 额外文字动画
-        function createExtraText() {
-            const texts = [
-                '🌟 中国最好大学！🌟',
-                '🚀 培养精英的摇篮！🚀',
-                '💪 学霸云集的地方！💪',
-                '🏆 成就梦想的殿堂！🏆',
-                '🎓 知识改变命运！🎓',
-                '🔥 前途无量！🔥',
-                '💖 人间天堂！💖',
-                '⚡ 超级无敌！⚡'
-            ];
-            
-            const container = document.getElementById('extraText');
-            let index = 0;
-            
-            setInterval(() => {
-                const span = document.createElement('span');
-                span.className = 'rainbow-text';
-                span.textContent = texts[index % texts.length];
-                span.style.animationDelay = (index * 0.1) + 's';
-                container.innerHTML = '';
-                container.appendChild(span);
-                index++;
-            }, 1500);
-        }
-        
-        // 鼠标移动粒子效果
-        document.addEventListener('mousemove', (e) => {
-            if (Math.random() > 0.9) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.textContent = ['✨', '💫', '⭐', '🌟'][Math.floor(Math.random() * 4)];
-                particle.style.left = e.clientX + 'px';
-                particle.style.top = e.clientY + 'px';
-                particle.style.setProperty('--tx', (Math.random() - 0.5) * 100 + 'px');
-                particle.style.setProperty('--ty', (Math.random() - 0.5) * 100 + 'px');
-                document.body.appendChild(particle);
-                setTimeout(() => particle.remove(), 2000);
-            }
-        });
-        
-        // 随机礼花
-        setInterval(() => {
-            if (Math.random() > 0.7) {
-                createFirework(
-                    Math.random() * window.innerWidth,
-                    Math.random() * window.innerHeight * 0.3
-                );
-            }
-        }, 2000);
-        
-        // 初始化
-        createStars();
-        createConfetti();
-        createExtraText();
-        
-        // 页面加载时礼花
-        window.onload = () => {
-            for (let i = 0; i < 5; i++) {
-                setTimeout(() => {
-                    createFirework(
-                        Math.random() * window.innerWidth,
-                        Math.random() * window.innerHeight * 0.5
-                    );
-                }, i * 200);
+        ];
+
+        // 地图数据
+        const mapData = {
+            jdz: {
+                name: '景德镇',
+                items: ['景德镇手工制瓷技艺', '景德镇青花釉里红', '景德镇颜色釉']
+            },
+            nc: {
+                name: '南昌',
+                items: ['南昌瓷板画', '赣绣', '南昌采茶戏']
+            },
+            gz: {
+                name: '赣州',
+                items: ['客家围屋营造技艺', '兴国山歌', '赣南客家服饰', '白鹭吉塘火龙']
+            },
+            sr: {
+                name: '上饶',
+                items: ['弋阳腔', '婺源三雕', '鄱阳湖渔歌', '铅山连四纸']
+            },
+            jj: {
+                name: '九江',
+                items: ['金星砚制作技艺', '武宁打鼓歌', '永修吴城跳蚤舞']
+            },
+            yt: {
+                name: '鹰潭',
+                items: ['龙虎山道教音乐', '贵溪捺跤']
+            },
+            px: {
+                name: '萍乡',
+                items: ['萍乡傩面具', '萍乡春锣']
+            },
+            yc: {
+                name: '宜春',
+                items: ['夏布织造技艺', '万载得胜鼓', '靖安枳壳']
+            },
+            fu: {
+                name: '抚州',
+                items: ['南丰傩舞', '宜黄戏', '临川文化']
+            },
+            xc: {
+                name: '新余',
+                items: ['新余采茶戏', '夏布绣']
             }
         };
+
+        // 渲染非遗卡片
+        function renderHeritageCards(filter = 'all') {
+            const grid = document.getElementById('heritageGrid');
+            const filteredData = filter === 'all' 
+                ? heritageData 
+                : heritageData.filter(item => item.category === filter);
+            
+            grid.innerHTML = filteredData.map(item => `
+                <div class="heritage-card fade-in visible" data-id="${item.id}">
+                    <div class="card-image">
+                        <img src="${item.image}" alt="${item.title}" loading="lazy">
+                        <span class="card-category">${item.category}</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">${item.title}</h3>
+                        <p class="card-desc">${item.desc}</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            ${item.location}
+                        </span>
+                        <a href="#" class="card-link" onclick="openModal(${item.id}); return false;">
+                            了解更多 →
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 渲染传承人卡片
+        function renderMastersCards() {
+            const slider = document.getElementById('mastersSlider');
+            slider.innerHTML = mastersData.map(master => `
+                <div class="master-card">
+                    <div class="master-image">
+                        <img src="${master.image}" alt="${master.name}" loading="lazy">
+                        <span class="master-badge">${master.title}</span>
+                    </div>
+                    <div class="master-info">
+                        <h3 class="master-name">${master.name}</h3>
+                        <p class="master-title">${master.skill}</p>
+                        <p class="master-skill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                            ${master.desc}
+                        </p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 打开模态框
+        function openModal(id) {
+            const item = heritageData.find(h => h.id === id);
+            if (!item) return;
+            
+            document.getElementById('modalImage').src = item.image;
+            document.getElementById('modalTitle').textContent = item.title;
+            document.getElementById('modalCategory').textContent = item.category;
+            document.getElementById('modalDesc').textContent = item.desc;
+            document.getElementById('modalHistory').textContent = item.history;
+            document.getElementById('modalStatus').textContent = item.status;
+            
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 渲染卡片
+            renderHeritageCards();
+            renderMastersCards();
+
+            // 导航滚动效果
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // 筛选按钮
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    renderHeritageCards(this.dataset.filter);
+                });
+            });
+
+            // 模态框
+            document.getElementById('modalClose').addEventListener('click', closeModal);
+            document.getElementById('modalOverlay').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // 地图交互
+            const mapPaths = document.querySelectorAll('#jiangxiMap path');
+            const mapInfo = document.getElementById('mapInfo');
+            
+            mapPaths.forEach(path => {
+                path.addEventListener('click', function() {
+                    mapPaths.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const region = this.dataset.region;
+                    const data = mapData[region];
+                    
+                    if (data) {
+                        mapInfo.innerHTML = `
+                            <h3>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                ${data.name}
+                            </h3>
+                            <ul class="map-heritage-list">
+                                ${data.items.map(item => `
+                                    <li>
+                                        <span class="heritage-name">${item}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        `;
+                    }
+                });
+            });
+
+            // 移动端菜单
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const mobileClose = document.getElementById('mobileClose');
+            
+            function openMobileMenu() {
+                mobileMenu.classList.add('active');
+                mobileOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            menuToggle.addEventListener('click', openMobileMenu);
+            mobileClose.addEventListener('click', closeMobileMenu);
+            mobileOverlay.addEventListener('click', closeMobileMenu);
+            
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // 滚动动画
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(el => observer.observe(el));
+        });
     </script>
 </body>
 </html>
